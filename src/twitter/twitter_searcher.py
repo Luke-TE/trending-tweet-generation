@@ -1,4 +1,7 @@
 import tweepy
+import logging
+
+log = logging.getLogger('trending-bot')
 
 
 class TwitterSearcher:
@@ -8,7 +11,9 @@ class TwitterSearcher:
 
     # Get trending queries for a certain area
     def get_trending_topics(self, area_id: int):
+        log.debug("Searcher sending a request for trends.")
         trending_data, = self.tweepy_interface.trends_place(area_id)
+
         trends = trending_data["trends"]
         # date_of_acquiry = trending_data["created_at"]
 
@@ -20,6 +25,7 @@ class TwitterSearcher:
         current_count = count
         max_id = -1
 
+        log.debug(f"Searcher searching for tweets with the query {query}.")
         while current_count > self.max_tweets_per_request:
             search_results += self._api_search(query, self.max_tweets_per_request, max_id)
             current_count -= self.max_tweets_per_request

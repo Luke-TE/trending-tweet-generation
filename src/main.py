@@ -1,22 +1,17 @@
 from bot.trend_bot import TrendBot
 from twitter.twitter_auth import TwitterAuth
 import os
-import logging
-
 
 MAX_TWEETS_PER_REQUEST = 100
 auth_filename = 'auth.json'
-area_id = 23424975
-log = logging.getLogger()
 
 
 def main():
     auth_path = os.path.join('config', auth_filename)
     tweepy_api = TwitterAuth.create_auth_from_json_file(auth_path)
-    trend_bot = TrendBot(tweepy_api, MAX_TWEETS_PER_REQUEST)
 
+    trend_bot = TrendBot(tweepy_api, MAX_TWEETS_PER_REQUEST)
     trend_bot.tweet_trending_topic()
-    trend_bot.tweet_test()
 
 
 if __name__ == '__main__':

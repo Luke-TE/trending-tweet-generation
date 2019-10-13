@@ -1,6 +1,9 @@
 import os
 import tweepy
 import json
+import logging
+
+log = logging.getLogger('trending-bot')
 
 
 class TwitterAuth:
@@ -30,5 +33,8 @@ class TwitterAuth:
         tweepy_api = tweepy.API(auth,
                                 wait_on_rate_limit=True,
                                 wait_on_rate_limit_notify=True)
-        tweepy_api.verify_credentials()
+        try:
+            tweepy_api.verify_credentials()
+        except Exception:
+            log.error(f"Credentials invalid. Cannot connect to twitter.")
         return tweepy_api
