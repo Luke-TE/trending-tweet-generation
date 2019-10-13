@@ -27,6 +27,8 @@ class TweepyAuth:
     @staticmethod
     def _create_api(auth):
         # Create and verify API
-        tweepy_api = tweepy.API(auth)
+        tweepy_api = tweepy.API(auth,
+                                wait_on_rate_limit=True,
+                                wait_on_rate_limit_notify=True)
         tweepy_api.verify_credentials()
         return tweepy_api
