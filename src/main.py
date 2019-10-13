@@ -10,10 +10,14 @@ def main():
     import argparse
     parser = argparse.ArgumentParser(description="Execute the trend bot.")
     parser.add_argument("--test", action='store_true')
+    parser.add_argument("--json", action='store_true')
     args = parser.parse_args()
 
     auth_path = os.path.join('config', auth_filename)
-    tweepy_api = TwitterAuth.create_auth_from_json_file(auth_path)
+    if args.json:
+        tweepy_api = TwitterAuth.create_auth_from_json_file(auth_path)
+    else:
+        tweepy_api = TwitterAuth.create_auth_from_env()
 
     trend_bot = TrendBot(tweepy_api, MAX_TWEETS_PER_REQUEST)
 
