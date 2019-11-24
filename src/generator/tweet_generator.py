@@ -1,10 +1,10 @@
 from textgenrnn import textgenrnn
-import tweepy
+from twitter.twitter_interface import TwitterInterface
 
 
 class TweetGenerator:
-    def __init__(self, tweepy_interface: tweepy.API):
-        self.tweepy_interface = tweepy_interface
+    def __init__(self, twitter_interface: TwitterInterface):
+        self.tweepy_interface = twitter_interface
         self.generator = None
 
     def train_model(self, tweet_texts):
