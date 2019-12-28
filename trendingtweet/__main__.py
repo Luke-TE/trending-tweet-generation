@@ -14,11 +14,11 @@ logging.basicConfig(level=logging.INFO)
 def main():
     import argparse
     parser = argparse.ArgumentParser(description="Execute the trend bot.")
-    parser.add_argument("--test", action='store_true')
-    parser.add_argument("--json", action='store_true')
+    parser.add_argument("--test", action='store_true', help="")
+    parser.add_argument("--json", action='store_true', help="")
     args = parser.parse_args()
 
-    auth_path = os.path.join('config', auth_filename)
+    auth_path = os.path.join('resources', auth_filename)
     tweepy_api = TwitterAuth.create_auth_from_json_file(auth_path) if args.json else TwitterAuth.create_auth_from_env()
     twitter_interface = TweepyInterface(tweepy_api) if not args.test else DummyTwitterInterface()
 

@@ -1,8 +1,10 @@
-# JSON data
-config/auth.json
+# Data
+trendingtweet/resources/auth.json
+Pipfile.lock
 
 # IDE / Editors
 .vscode/
+.idea/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
