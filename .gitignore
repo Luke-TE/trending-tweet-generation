@@ -1,8 +1,9 @@
-# JSON data
-config/auth.json
+# Data
+trendingtweet/resources/auth.json
 
 # IDE / Editors
 .vscode/
+.idea/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -128,3 +129,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/env_file

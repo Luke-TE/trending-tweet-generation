@@ -1,16 +1,16 @@
 from textgenrnn import textgenrnn
-import tweepy
+from twitter.twitter_interface import TwitterInterface
 
 
 class TweetGenerator:
-    def __init__(self, tweepy_interface: tweepy.API):
-        self.tweepy_interface = tweepy_interface
-        self.generator = None
+    def __init__(self, twitter_interface: TwitterInterface, generator: Generator):
+        self.tweepy_interface = twitter_interface
+        self.generator = generator
 
     def train_model(self, tweet_texts):
         self.generator = textgenrnn()
         self.generator.train_on_texts(tweet_texts,
-                                      num_epochs=5)
+                                      num_epochs=1)
 
     def save_model(self):
         self.generator.save("save")
